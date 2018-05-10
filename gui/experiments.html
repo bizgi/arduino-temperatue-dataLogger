@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Temperature Dashboard</title>
+    <script src='js/jquery3.3.1.min.js'></script>
+    <script src='js/jquery-ui.js'></script>
+     <script src='js/d3.js'></script>
+    <script src='js/plotly-latest.min.js'></script>
+
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <script>
+    function onoff(){
+      currentvalue = document.getElementById('onoff').value;
+      if(currentvalue == "Off"){
+        document.getElementById("onoff").value="On";
+        location.reload();
+      }else{
+        document.getElementById("onoff").value="Off";
+      }
+    }
+    </script>
+
+    <script src='js/class-plot.js'></script>
+    <script src='js/plot.js'></script>
+        <script src='js/main.js'></script>
+
+   </head>
+  <body>
+
+<br>
+
+<div  class="container">
+  <div class="row">
+    <a href="./index.html">INDEX</a>
+    <a href="./dash.html">DASH</a>
+    <a href="./experiments.html">EXPERIMENTS</a>
+
+        <h3> Experiments</h3>
+
+
+
+
+    </div>
+
+
+<hr>
+<div class="row">
+  <div class="col-md-12">
+    <select id = "expDataLoad" class="form-control">
+      <option selected> Select</option>;
+    </select>
+    <!-- <br>
+    <div id="plotValues"> </div>
+    <br> -->
+  </div>
+
+  <!-- <div class="col-md-6">
+    <select id = "expDataLoad2" class="form-control">
+      <option selected> Select</option>;
+    </select>
+    <br>
+    <div id="plotValues2"> </div>
+    <br>
+  </div> -->
+
+</div>
+
+
+
+<!-- <button id="selectBtn"> Plot </button> -->
+<hr>
+<br>
+<div id="display"></div>
+
+
+ <!-- <button id="tik">Save Plot</button> -->
+
+    <div  id ="plot"></div>
+<div  id ="save-Data"></div>
+<div id = "plotData" class="Data"> </div>
+
+
+
+<img id="imgExp"></img>
+
+</div>
+  </body>
+</html>

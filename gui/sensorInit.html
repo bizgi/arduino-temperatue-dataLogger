@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Sensor Init</title>
+    <script src='js/jquery3.3.1.min.js'></script>
+    <script src='js/jquery-ui.js'></script>
+     <script src='js/d3.js'></script>
+    <script src='js/plotly-latest.min.js'></script>
+
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <script src='js/main.js'></script>
+
+   </head>
+  <body>
+
+<br>
+<div  class="container">
+    <div class="row">
+        <a href="./index.html">INDEX</a>
+        <a href="./dash.html">DASH</a>
+        <a href="./experiments.html">EXPERIMENTS</a>
+        <h3>Temperature Datalogger</h3>
+    </div>
+
+  <hr>
+
+
+  <br>
+
+  <!---
+    Auto Sensor Init ***********************************************
+  --->
+<h3 align="center">Sensor Init</h3>
+
+
+
+<div align="center" class="row">
+  <div class="col">
+    <br>
+  <input class="btn btn-primary" type="button" value="START" id="sensorInitBtn">
+  </div>
+</div>
+
+
+
+
+<br><br>
+
+ <div class="row">
+   <p id="reading"></p>
+  <div class="col-md-8" id="sensor-area">
+
+
+     <div class="col-md-4"> Sensor Id
+     </div>
+
+     <div class="col-md-4"> Temperature
+     </div>
+
+     <div class="col-md-4">Sensor Name
+       <br><br>
+     </div>
+
+     <div id="sensor-names">
+        <!-- create form from main.js  -->
+     </div>
+
+     <div class="col-md-4">
+     </div>
+
+     <div class="col-md-4">
+     </div>
+
+     <div class="col-md-4">
+       <br>
+       <input class="btn btn-primary" type="button" value="Save" id="saveSensorNames">
+     </div>
+
+
+   </div>
+
+   <div class="col-md-4">
+   </div>
+
+
+ </div>
+
+   <hr>
+  <!--********************************************************
+  -->
+
+
+
+</div>
+
+
+
+  </body>
+</html>
