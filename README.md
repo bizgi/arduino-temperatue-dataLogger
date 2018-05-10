@@ -1,1 +1,1 @@
-# arduino-temperatue-dataLogger
+# arduino-temperature-dataLogger
