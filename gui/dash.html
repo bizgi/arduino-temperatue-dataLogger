@@ -33,18 +33,17 @@
 <br>
 
 <div  class="container">
-  <div class="row">
-    <a href="./index.html">INDEX</a>
-    <a href="./dash.html">DASH</a>
-    <a href="./experiments.html">EXPERIMENTS</a>
-
+  <div id="menu" class="navbar-nav navbar-inverse navbar-fixed-top">
+  </div>
+<div class="row">
 <br><br>
-    <p>
-      Stop Experiment: <input class="btn btn-primary" type="button" value=" " id="sbtn">
+  <h3 align="center">Stop Experiment</h3>
+    <p align="center">
+    <input class="btn btn-primary" type="button" value=" " id="sbtn">
      <br>
     </p>
 
-        <h3>Temperatures [<sup>o</sup>C]</h3>
+  <h3 align="center">Temperatures [<sup>o</sup>C]</h3>
 <!--
       <div class="col-sm-2 col-lg-2">
         <div class="half-unit">
@@ -90,14 +89,22 @@
 
     </div>
 <div class="row">
-    <div id = "dash-temps"> </div>
+    <div  id = "dash-temps"> </div>
+
 </div>
 
  <hr>
-<div id="display">... </div>
+<div align="center" id="display">... </div>
 <br>
  <hr>
-     <div id ="plot"></div>
+
+   <div class="stopwatch" align="center">
+     <span class="hours">00</span>
+     <span class="minutes">00</span>
+     <span class="seconds">00</span>
+   </div>
+
+    <div id ="plot"></div>
 
 <div id = "plotData" class="Data"> </div>
 <img id="jpg-export"></img>

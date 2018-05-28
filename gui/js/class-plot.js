@@ -3,6 +3,8 @@ class plot {
 	constructor(plotPoints) {
 		this.plotPoints = plotPoints;
 		this.layout = {
+			paper_bgcolor : '#1f1f1f',
+			plot_bgcolor : '#1f1f1f',
 			// width: 800,
 			height: 800,
 			//title: 'Sıcaklık Dağılımı',
@@ -11,7 +13,7 @@ class plot {
 				// x: 0.2,
 				orientation: "h",
 				// traceorder: 'reversed',
-				// font: {size: 28},
+				font: {color:'#ababab'},
 			},
 			margin:{
 				b:150,
@@ -34,12 +36,12 @@ class plot {
 					tickfont: {
 						family: 'Old Standard TT, serif',
 						// size: 30,
-						color: 'black'
+						color: '#ababab'
 					},
 					titlefont: {
 						//family: 'Courier New, monospace',
 						// size: 30,
-						color: 'black'
+						color: '#ababab'
 					},
 				},
 
@@ -54,19 +56,19 @@ class plot {
 				tickfont: {
 					family: 'Old Standard TT, serif',
 					// size: 30,
-					color: 'black',
+					color: '#ababab',
 				},
 
 				titlefont: {
 					//	family: 'Courier New, monospace',
 						// size: 30,
-						color: 'black'
+						color: '#ababab'
 						}
 			}
 		};
 
-		this.symbols = ["square", "square-open", "diamond", "diamond-open", "circle", "circle-open"];
-		this.colors = ["blue", "red", "green"]
+		this.symbols = [ "square-open",  "diamond-open",  "circle-open", "circle", "diamond", "square"];
+		this.colors = ["#e46a6b","#d9d9d9" , "#91c7a9", "#44B5DF", "#a2482b", "#de8d47"]
 		this.saveName = this.layout['yaxis']['title'] + " - " + this.layout['xaxis']['title']
 
 		this.xName = Object.keys(this.plotPoints[0])

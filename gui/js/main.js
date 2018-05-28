@@ -7,6 +7,11 @@
 //   }
 
 window.onload=function() {
+
+ // load top menu
+  $("#menu").load("/menu.html");
+//--
+
   // start - stop port reading
   if (bt = document.getElementById("btn") != null){
     var bt = document.getElementById("btn");
@@ -98,33 +103,29 @@ window.onload=function() {
   function initExp(){
 
     var date = new Date();
-    var startTime = "-" + date.getFullYear() + "-" + (date.getMonth()+1)+ "-" + date.getDate() + "-" + date.getHours() + "-" + date.getMinutes()
+    var startTime = date.getFullYear() + "-" + (date.getMonth()+1)+ "-" + date.getDate() + "-" + date.getHours() + "-" + date.getMinutes() + "-"
     console.log(startTime);
 
-    var expName = document.getElementById("expName").value + startTime;
+    var expName = startTime + document.getElementById("expName").value;
     var expTimeStep = document.getElementById("expTimeStep").value;
     var expTotalTime = document.getElementById("expTotalTime").value;
-    var expHotInletFlowRate = document.getElementById("expHotInletFlowRate").value;
-    var expColdInletFlowRate = document.getElementById("expColdInletFlowRate").value;
+
 
     $.getJSON("add/" + "expName/" + expName);
     $.getJSON("add/" + "expTimeStep/" + expTimeStep);
     $.getJSON("add/" + "expTotalTime/" + expTotalTime);
-    $.getJSON("add/" + "expHotInletFlowRate/" + expHotInletFlowRate);
-    $.getJSON("add/" + "expColdInletFlowRate/" + expColdInletFlowRate);
+
 
      document.getElementById("expName").value = null;
      document.getElementById("expName").placeholder = expName;
      document.getElementById("expTimeStep").value = null;
      document.getElementById("expTotalTime").value = null;
-     document.getElementById("expHotInletFlowRate").value = null;
-     document.getElementById("expColdInletFlowRate").value = null;
+
 
      document.getElementById("initExpName").innerHTML = expName;
      document.getElementById("initExpTimeStep").innerHTML = expTimeStep;
      document.getElementById("initTotalTime").innerHTML = expTotalTime;
-     document.getElementById("initHotInletFlowRate").innerHTML = expHotInletFlowRate;
-     document.getElementById("initColdInletFlowRate").innerHTML = expColdInletFlowRate;
+
 
 
   };
@@ -211,11 +212,7 @@ window.onload=function() {
             document.getElementById(temp).innerHTML = temps[j];
             $(tempa).animate({color: '#FF0000'}, 'slow').animate({color: '#000'}, 'slow');
           }
-
-
         }
-
-
       }
     };
 
@@ -238,8 +235,93 @@ window.onload=function() {
 
 console.log(sId);
 
-
   }; // sensor ini if
+
+
+/////// stopwatch
+var interval = null;
+var currentIncrement = 0;
+var isPaused = false;
+var initialised = false;
+var clicked = false;
+
+
+$.getJSON("./status.json", gotStat);
+  function gotStat(data){
+    console.log(data);
+    if (data.status =="START"){
+      initialiseTimer()
+    }
+
+  }
+
+
+$(".playpause").click(function(e) {
+  if (clicked) {
+    e.preventDefault();
+    return false;
+  }
+
+  if (!initialised) {
+    initialised = true;
+    isPaused = false;
+    $(".playpause span").removeClass();
+    $(".playpause span").addClass("pause");
+    initialiseTimer();
+  } else {
+    $(".playpause span").removeClass();
+    if (isPaused) {
+      isPaused = false;
+      $(".playpause span").addClass("pause");
+    } else {
+      isPaused = true;
+      $(".playpause span").addClass("play");
+    }
+  }
+});
+
+$(".stop").click(function() {
+  reset();
+});
+
+function initialiseTimer() {
+  interval = setInterval(function() {
+    if (isPaused) return;
+    var current = setCurrentIncrement();
+    updateStopwatch(current);
+  }, 1000)
+}
+
+function updateStopwatch(increment) {
+  var hours = Math.floor(increment / 3600);
+  var minutes = Math.floor((increment - (hours * 3600)) / 60);
+  var seconds = increment - (hours * 3600) - (minutes * 60);
+
+  if(hours > 99)
+    reset();
+
+  $(".hours").text(hours < 10 ? ("0" + hours.toString()) : hours.toString())
+  $(".minutes").text(minutes < 10 ? ("0" + minutes.toString()) : minutes.toString())
+  $(".seconds").text(seconds < 10 ? ("0" + seconds.toString()) : seconds.toString())
+}
+
+function setCurrentIncrement() {
+  currentIncrement += 1;
+  return currentIncrement;
+}
+
+function reset() {
+  currentIncrement = 0;
+  isPaused = true;
+  initialised = false;
+  clearInterval(interval);
+  $(".hours").text("00");
+  $(".minutes").text("00");
+  $(".seconds").text("00");
+  $(".playpause span").removeClass();
+  $(".playpause span").addClass("play");
+}
+//////// -- stopwatch ----
 
 
 

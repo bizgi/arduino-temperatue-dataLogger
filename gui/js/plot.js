@@ -208,7 +208,9 @@ function getData() {
 
 
 	for (let i=0; i<ids.length; i++){
-		 templ += "<div class='col-md-6'><p id='sId" + i +  "'></p></div><div class='col-md-6'><p id='sTemp" + i +  "'></p></div>"
+		 templ += "<div class='col-sm-2 col-lg-2'> <div class='half-unit'><dtitle id='sId" + i +  "'></dtitle><hr><div class='clockcenter' id='sTemp" + i +  "'></div></div></div>"
+
+ 		 // templ += "<td> <table width='50px' align='center'><tr><td align='center' id='sId" + i +  "'></td></tr><tr><td align='center' id='sTemp" + i +  "'></td></tr></table> </td>"
 	};
 	document.getElementById('dash-temps').innerHTML = templ;
 
@@ -230,7 +232,7 @@ function getData() {
 				 console.log(ch);
 				 if (ch != temps[j]){
 					 document.getElementById(temp).innerHTML = temps[j];
-					 $(tempa).animate({color: '#FF0000'}, 'slow').animate({color: '#000'}, 'slow');
+					 $(tempa).animate({color: '#FF0000'}, 'slow').animate({color: '#fff'}, 'slow');
 				 }
 
 			 	}

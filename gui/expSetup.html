@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Temperature Dashboard</title>
+    <script src='js/jquery3.3.1.min.js'></script>
+    <script src='js/jquery-ui.js'></script>
+     <script src='js/d3.js'></script>
+    <script src='js/plotly-latest.min.js'></script>
+
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <script src='js/main.js'></script>
+
+   </head>
+  <body>
+
+<br>
+<div  class="container">
+    <div class="row">
+      <div id="menu" class="navbar-nav navbar-inverse navbar-fixed-top">
+      </div>
+        
+        <br><br>
+        <h3>Temperature Datalogger </h3>
+    </div>
+
+  <hr>
+  <h3 align="center">Experiment Setup</h3>
+
+  <div class="row">
+  <div class="col-md-4">
+    <h3>Setup</h3>
+    <div class="form-group">
+    Experiment Name <input class="form-control" id="expName">
+      <div class="row">
+        <div class="col-md-6">
+          Time Step [minute] <input class="form-control" id="expTimeStep">
+        </div>
+        <div class="col-md-6">
+          Total Time [minute] <input class="form-control" id="expTotalTime">
+        </div>
+      </div>
+
+    <hr>
+    <!-- <div class="row">
+      <div class="col-md-6">
+        Hot Inlet Flow Rate [L/dk] <input class="form-control" id="expHotInletFlowRate">
+      </div>
+      <div class="col-md-6">
+        Cold Inlet Flow Rate [L/dk] <input class="form-control" id="expColdInletFlowRate">
+      </div>
+    </div> -->
+
+    <br>
+    <button class="btn btn-primary" id="init">Init Exp</button>
+    </div>
+  </div>
+
+  <div class="col-md-2">
+  </div>
+
+    <div class="col-md-6">
+      <h3>Initial </h3>
+      <dl class="dl-horizontal">
+        <dt>Experiment Name</dt>
+          <dd id = "initExpName">...</dd>
+        <dt>Time Step</dt>
+          <dd id = "initExpTimeStep">...</dd>
+        <dt>Total Time</dt>
+          <dd id = "initTotalTime">...</dd>
+        <hr>
+        <!-- <dt>Hot Inlet Flow Rate</dt>
+          <dd id = "initHotInletFlowRate">...</dd>
+        <dt>Cold Inlet Flow Rate</dt>
+          <dd id = "initColdInletFlowRate">...</dd> -->
+      </dl>
+    </div>
+
+  </div>
+
+
+  <hr>
+  <div align="center" class="row">
+    <div class="col">
+    <h3 align="center">  Start Experiment </h3>
+      <input class="btn btn-primary" type="button" value="START" id="btn">
+  </div>
+  </div>
+
+<hr>
+
+
+
+
+</div>
+
+
+
+  </body>
+</html>
