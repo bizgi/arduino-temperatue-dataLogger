@@ -30,7 +30,7 @@ void loop(void) {
     yaz = "";
     j = 0;
     ds.reset_search();
-    delay(57000); // read every 60 sec
+    delay(1000); // read every sec
     return;
    }
   
@@ -38,7 +38,7 @@ void loop(void) {
   ds.select(addr);
   ds.write(0x44, 1);        // start conversion, with parasite power on at the end
   
-  delay(1000);     // maybe 750ms is enough, maybe not
+  delay(50);     // maybe 750ms is enough, maybe not
   // we might do a ds.depower() here, but the reset will take care of it.
   
   present = ds.reset();
