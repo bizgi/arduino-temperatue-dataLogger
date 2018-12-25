@@ -3,8 +3,8 @@ class plot {
 	constructor(plotPoints) {
 		this.plotPoints = plotPoints;
 		this.layout = {
-			paper_bgcolor : '#1f1f1f',
-			plot_bgcolor : '#1f1f1f',
+			paper_bgcolor : 'rgba(0,0,0,0)',
+			plot_bgcolor : 'rgba(0,0,0,0)',
 			// width: 800,
 			height: 800,
 			//title: 'Sıcaklık Dağılımı',
@@ -13,7 +13,7 @@ class plot {
 				// x: 0.2,
 				orientation: "h",
 				// traceorder: 'reversed',
-				font: {color:'#ababab'},
+				font: {color:'#616161'},
 			},
 			margin:{
 				b:150,
@@ -24,6 +24,8 @@ class plot {
 				showgrid: true,
 				zeroline: true,
 				showline: true,
+				gridcolor: 'rgba(20,20,20,0.2)',
+				// linecolor : '#e0e0e0',
 				ticks: 'inside',
 				mirror: 'ticks',
 				tick0: 0,
@@ -36,12 +38,12 @@ class plot {
 					tickfont: {
 						family: 'Old Standard TT, serif',
 						// size: 30,
-						color: '#ababab'
+						color: '#616161'
 					},
 					titlefont: {
 						//family: 'Courier New, monospace',
 						// size: 30,
-						color: '#ababab'
+						color: '#616161'
 					},
 				},
 
@@ -49,6 +51,8 @@ class plot {
 				showgrid: true,
 				zeroline: true,
 				showline: true,
+				gridcolor: 'rgba(20,20,20,0.2)',
+				// linecolor : '#e0e0e0',
 				ticks: 'inside',
 				mirror: 'ticks',
 
@@ -56,19 +60,19 @@ class plot {
 				tickfont: {
 					family: 'Old Standard TT, serif',
 					// size: 30,
-					color: '#ababab',
+					color: '#616161',
 				},
 
 				titlefont: {
 					//	family: 'Courier New, monospace',
 						// size: 30,
-						color: '#ababab'
+						color: '#616161'
 						}
 			}
 		};
 
 		this.symbols = [ "square-open",  "diamond-open",  "circle-open", "circle", "diamond", "square"];
-		this.colors = ["#e46a6b","#d9d9d9" , "#91c7a9", "#44B5DF", "#a2482b", "#de8d47"]
+		this.colors = ["#e46a6b","#44B5DF" , "#91c7a9", "#44B5DF", "#a2482b", "#de8d47"]
 		this.saveName = this.layout['yaxis']['title'] + " - " + this.layout['xaxis']['title']
 
 		this.xName = Object.keys(this.plotPoints[0])

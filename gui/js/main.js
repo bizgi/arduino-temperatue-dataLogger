@@ -23,7 +23,7 @@ window.onload=function() {
    //console.log(val);
     var val = document.getElementById('btn').value;
     $.getJSON("stat/status/" + val);
-
+	
     var currentvalue = document.getElementById('btn').value;
     if(currentvalue == "STOP"){
       document.getElementById("btn").value="START";
@@ -50,11 +50,12 @@ window.onload=function() {
 
         let currentvalue =  data["status"];
         if(currentvalue == "STOP"){
-          // location = location;
+          
           document.getElementById("sbtn").value="START";
-
+		// location = location;
         }else{
           document.getElementById("sbtn").value="STOP";
+		  // location = location;
         }
       };
 
@@ -62,7 +63,7 @@ window.onload=function() {
      //console.log(val);
       let val = document.getElementById('sbtn').value;
       $.getJSON("stat/status/" + val);
-
+		location = location;
       $.getJSON("./status.json", gotData);
         function gotData(data){
           console.log(data);
@@ -70,10 +71,12 @@ window.onload=function() {
 
           let currentvalue =  data["status"];
           if(currentvalue == "STOP"){
-            location = location;
             document.getElementById("sbtn").value="START";
+			location = location;
           }else{
+			
             document.getElementById("sbtn").value="STOP";
+			location = location;
           };
         }
     };
@@ -244,6 +247,7 @@ var currentIncrement = 0;
 var isPaused = false;
 var initialised = false;
 var clicked = false;
+var sec = 0;
 
 
 $.getJSON("./status.json", gotStat);
@@ -251,6 +255,7 @@ $.getJSON("./status.json", gotStat);
     console.log(data);
     if (data.status =="START"){
       initialiseTimer()
+	  move()
     }
 
   }
@@ -289,6 +294,8 @@ function initialiseTimer() {
     if (isPaused) return;
     var current = setCurrentIncrement();
     updateStopwatch(current);
+	sec += 1;
+	console.log(" sec: " + sec)
   }, 1000)
 }
 
@@ -296,6 +303,7 @@ function updateStopwatch(increment) {
   var hours = Math.floor(increment / 3600);
   var minutes = Math.floor((increment - (hours * 3600)) / 60);
   var seconds = increment - (hours * 3600) - (minutes * 60);
+
 
   if(hours > 99)
     reset();
@@ -323,8 +331,36 @@ function reset() {
 }
 //////// -- stopwatch ----
 
+//////// bar
+ function move() {
+  $.getJSON("./expSetup.json", gotTime);
+    function gotTime(data){
+      // console.log(data);
+      var expTotalTime = Number( data.expTotalTime) ;
+	  // console.log(expTotalTime)
+  	 
+  var elem = document.getElementById("myBar");
+  var end = expTotalTime * 60 // seconds
+  var pers = (sec / end ) * 100
+  var width = pers.toFixed(2)
+   if (width >= 100) {
+		elem.style.width = 100 + '%'; 
+		elem.innerHTML = 100 * 1  + '%';
+		var val = "STOP";
+		$.getJSON("stat/status/" + val);
+		location =	location;
+   }else {
+		elem.style.width = width + '%'; 
+		elem.innerHTML = width * 1  + '%';
+		}
+  setTimeout(move, 1000);
+}
+}
 
 
+
+
+	
 
 
 

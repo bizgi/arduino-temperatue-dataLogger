@@ -144,4 +144,4 @@ SerialPort.list(function (err, ports) {
 
 };
 module.exports = portReader;
-// portReader()
+ portReader()

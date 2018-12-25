@@ -2,8 +2,6 @@ document.addEventListener('DOMContentLoaded', lo);
 
 function lo(){
 
-
-
 // get experiment status
 var expStatus;
 $.getJSON('./status.json', gotStatus);
@@ -29,11 +27,9 @@ if (document.getElementById('expDataLoad') != null){
 		};
 }
 
-
 // load current experiment data
 var expTimeStep,
-		expTotalTime
-
+	expTotalTime
 
 $.ajax({
     type: 'GET',
@@ -48,27 +44,27 @@ $.ajax({
 				csv = "./expData/" + dir + "/data.csv"
 				if (document.getElementById('expDataLoad') == null){
 					document.getElementById('display').innerHTML = dir;
+					document.getElementById('totExpTime').innerHTML = expTotalTime;
 				}
 			}
 });
 
 
+// show saved experiment data
+function showPlotValues() {
+	// document.getElementById('plotValues').innerHTML = "";
 
- 	// show saved experiment data
-	function showPlotValues() {
-		// document.getElementById('plotValues').innerHTML = "";
+	let value =  $('#expDataLoad').val();
+	csv = "./expData/" + value + "/data.csv"
 
-		let value =  $('#expDataLoad').val();
-		csv = "./expData/" + value + "/data.csv"
+	console.log(csv);
+	let plotPoints = processData(csv)
+	console.log(plotPoints);
+	plotDash = new plot(plotPoints)
+	plotDash.makePlot();
+	plotDash.downloadData();
 
-		console.log(csv);
-		let plotPoints = processData(csv)
-		console.log(plotPoints);
-		plotDash = new plot(plotPoints)
-		plotDash.makePlot();
-		plotDash.downloadData();
-
-	};
+};
 
 
 if (document.getElementById('expDataLoad') != null){
@@ -78,8 +74,6 @@ if (document.getElementById('expDataLoad') != null){
 
 // console.log(csv);
 // var csv = "./data.csv";
-
-
 
 function processData(csv) {
 	var rawCsv;
@@ -164,18 +158,6 @@ function processData(csv) {
 };
 
 
-	// function richardson(t_top, t_bottom){
-	// 	const g = 9.81;
-	// 	const beta = 0.000247;
-	// 	const H = 0.8;
-	// 	var V = 0.2;
-	//
-	// 	var ri = ((g * beta * H * (t_top - t_bottom)) / (V*V)).toFixed(6) ;
-	// 	//console.log(ri);
-	// 	return ri
-	// };
-
-
 if (document.getElementById('expDataLoad') == null){
 	let plotPoints = processData(csv)
 	console.log(plotPoints);
@@ -237,7 +219,7 @@ function getData() {
 
 			 	}
 		 	}
-			setTimeout(readDatas, 5000);
+			setTimeout(readDatas, 3000);
 
 			if (document.getElementById('expDataLoad') == null){
 				if (expStatus  == 'START') {
@@ -248,7 +230,7 @@ function getData() {
 						plotDash = new plot(plotPoints)
 						plotDash.makePlot();
 					}
-					setTimeout(ref, 5000);
+					setTimeout(ref, 3000);
 				}
 
 			}

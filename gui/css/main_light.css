@@ -21,10 +21,9 @@
 - #b2c831 (Green - Used in titles, badges, bars and other)
 - #bdbdbd & #fff (Font colors)
 */
-
  #myProgress {
   width: 100%;
-  background-color: #3d3d3d;
+  background-color: #ddd;
 }
 
 #myBar {
@@ -35,6 +34,7 @@
   line-height: 30px;
   color: white;
 }
+
 
 .stopwatch{
 	font-size: 20px;
@@ -48,8 +48,6 @@
   width: 45px;
   vertical-align: top;
 }
-
-
 
 Data {
   visibility: hidden;
@@ -79,18 +77,9 @@ Data {
 
 /**********BASE CONFIGURATIONS**********/
 body {
-	background:#1f1f1f;
+	background:#fff;
     font-family: 'Open Sans', sans-serif;
-    color: #ababab;
 }
-
-/* body.light { */
-	/* background:#fff; */
-    /* font-family: 'Open Sans', sans-serif; */
- 
-/* } */
-
-
 
 h1 {
 font-family: 'Raleway', sans-serif;}
@@ -238,7 +227,7 @@ h5 {
 }
 
 .half-unit dtitle {
-	font-size:12px;
+	font-size:10px;
 	text-transform:uppercase;
 	color:#ffffff;
 	margin:8px;
@@ -317,7 +306,6 @@ h5 {
 	margin-left:8px;
 	font-size:14px;
 	line-height:18px;
-  color: #ababab;
 }
 
 .text grey {
@@ -428,7 +416,6 @@ digiclock {
 
 .clockcenter {
 	text-align:center;
-  font-size: 18px;
 }
 
 

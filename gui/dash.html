@@ -1,6 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
+      <script>
+     <!-- function setStyleSheet(url1, url2){ -->
+       <!-- var main = document.getElementById("themeMain"); -->
+       <!-- main.setAttribute('href', url1); -->
+	    <!-- var boots = document.getElementById("themeBoost"); -->
+       <!-- boots.setAttribute('href', url2); -->
+    <!-- } -->
+	//// dark theme swicher
+function toggleDarkLight() {
+  var body = document.getElementById("body");
+  var currentClass = body.className;
+  body.className = currentClass == "dark" ? "light" : "dark";
+}
+
+    </script>
+    
+	<link rel="icon" href="img/sensor.png">
     <meta charset="UTF-8">
     <title>Temperature Dashboard</title>
     <script src='js/jquery3.3.1.min.js'></script>
@@ -8,42 +25,25 @@
      <script src='js/d3.js'></script>
     <script src='js/plotly-latest.min.js'></script>
 
-    <link href="css/main.css" rel="stylesheet">
-    <link href="css/bootstrap.css" rel="stylesheet">
-
-    <script>
-    function onoff(){
-      currentvalue = document.getElementById('onoff').value;
-      if(currentvalue == "Off"){
-        document.getElementById("onoff").value="On";
-        location.reload();
-      }else{
-        document.getElementById("onoff").value="Off";
-      }
-    }
-    </script>
+    <link id="themeMain" href="css/main.css" rel="stylesheet">
+    <link id="themeBoost" href="css/bootstrap.css" rel="stylesheet">
 
     <script src='js/class-plot.js'></script>
     <script src='js/plot.js'></script>
     <script src='js/main.js'></script>
 
    </head>
-  <body>
+  <body id="body" class="dark">
 
 <br>
-
 <div  class="container">
   <div id="menu" class="navbar-nav navbar-inverse navbar-fixed-top">
   </div>
 <div class="row">
-<br><br>
-  <h3 align="center">Stop Experiment</h3>
-    <p align="center">
-    <input class="btn btn-primary" type="button" value=" " id="sbtn">
-     <br>
-    </p>
-
-  <h3 align="center">Temperatures [<sup>o</sup>C]</h3>
+<br>
+<h3>Dashboard</h3>
+<hr>
+  <h4 align="center">Temperatures [<sup>o</sup>C]</h4>
 <!--
       <div class="col-sm-2 col-lg-2">
         <div class="half-unit">
@@ -94,8 +94,23 @@
 </div>
 
  <hr>
-<div align="center" id="display">... </div>
-<br>
+ <table width="100%">
+ <tr>
+ <td> Experiment Name </td>
+ <td> : </td>
+	 <td> <div align="left" id="display"> ... </div> </td>
+	 <td align="right">     <input class="btn btn-primary" type="button" value=" " id="sbtn"></td>
+ </tr>
+  <tr><td> Total Experimen Time </td>
+  <td> : </td>
+	 <td> <div align="left" id="totExpTime">... </div> </td>
+ </tr>
+</table>
+
+ <hr>
+ <div id="myProgress">
+  <div id="myBar">0%</div>
+</div>
  <hr>
 
    <div class="stopwatch" align="center">
